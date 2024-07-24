@@ -77,24 +77,28 @@ function App() {
       },
     ]
     const [todisplay,setTodisplay]=useState(items);
-
+    const [what,setWhat] = useState("all")
     const displayall=(e)=>{
       setTodisplay(items);
+      setWhat("all");
       e.preventDefault();
     }
     const displaybreakfast=(e)=>{
       const temp=items.filter((item)=>{return item.category=="breakfast"})
       setTodisplay(temp);
+      setWhat("breakfast");
       e.preventDefault();
     }
     const displaylunch=(e)=>{
       const temp=items.filter((item)=>{return item.category=="lunch"})
       setTodisplay(temp);
+      setWhat("lunch");
       e.preventDefault();
     }
     const displayshakes=(e)=>{
       const temp=items.filter((item)=>{return item.category=="shakes"})
       setTodisplay(temp);
+      setWhat("shakes");
       e.preventDefault();
     }
 
@@ -103,11 +107,11 @@ function App() {
         <h2>Our Menu</h2>
         <div className='menu'>
             <div id="all" onClick={displayall}>All</div>
-            <div data-test-id="menu-item-breakfast"> <button id="filter-btn-1" onClick={displaybreakfast}>Breakfast</button></div>
+            <div > <button id="filter-btn-1" onClick={displaybreakfast}>Breakfast</button></div>
             <div data-test-id="menu-item-lunch"> <button id="filter-btn-1"  onClick={displaylunch}>Lunch</button></div>
             <div data-test-id="menu-item-shakes"> <button id="filter-btn-1"  onClick={displayshakes}>Shakes</button></div>
         </div>
-        <div id='content'>
+        {what=="all"? <div className ="content" id='content'>
             {
               todisplay.map((item)=>{
                 return <div className='card'>
@@ -122,7 +126,68 @@ function App() {
                 </div>
               })
             }
-        </div>
+        </div>: what=="breakfast"?<div className ="content" data-test-id="menu-item-breakfast">
+            {
+              todisplay.map((item)=>{
+                return <div className='card'>
+                  <div className='img'><img src={item.img} alt='image'></img></div>
+                  <div className='details'>
+                    <div className='nameprice'>
+                      <h4>{item.title}</h4>
+                      <p>$ {item.price}</p>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              })
+            }
+        </div>: what=="lunch"?<div className ="content" data-test-id="menu-item-lunch">
+            {
+              todisplay.map((item)=>{
+                return <div className='card'>
+                  <div className='img'><img src={item.img} alt='image'></img></div>
+                  <div className='details'>
+                    <div className='nameprice'>
+                      <h4>{item.title}</h4>
+                      <p>$ {item.price}</p>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              })
+            }
+        </div>:<div className ="content" data-test-id="menu-item-shakes">
+            {
+              todisplay.map((item)=>{
+                return <div className='card'>
+                  <div className='img'><img src={item.img} alt='image'></img></div>
+                  <div className='details'>
+                    <div className='nameprice'>
+                      <h4>{item.title}</h4>
+                      <p>$ {item.price}</p>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              })
+            }
+        </div>}
+        {/* <div id='content'>
+            {
+              todisplay.map((item)=>{
+                return <div className='card'>
+                  <div className='img'><img src={item.img} alt='image'></img></div>
+                  <div className='details'>
+                    <div className='nameprice'>
+                      <h4>{item.title}</h4>
+                      <p>$ {item.price}</p>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              })
+            }
+        </div> */}
     </div>
   )
 }
