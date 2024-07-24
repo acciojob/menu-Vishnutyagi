@@ -10,3 +10,32 @@ button{
     justify-content: center;
     align-items: center;
 }
+
+.menu{
+    display: flex;
+    /* gap: 20px; */
+    justify-content: space-around;
+    align-items: center;
+    /* width: 50%; */
+}
+
+.main{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.nameprice{
+    display: flex;
+    justify-content: space-between;
+}
+.card{
+    display: flex;
+    
+}
+#content{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap:50px;
+    text-align: center;
+}
