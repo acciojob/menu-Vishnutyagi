@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import '../styles/App.css';
+import React, { useState } from 'react'
+import '../styles/App.css'
 
 function App() {
-  const items = [
+    const items=[
       {
         id: 1,
         title: 'buttermilk pancakes',
@@ -75,58 +75,56 @@ function App() {
         img: './images/item-9.jpeg',
         desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
       },
-  ];
+    ]
+    const [todisplay,setTodisplay]=useState(items);
 
-  const [todisplay, setTodisplay] = useState(items);
-
-  const displayall = (e) => {
-    setTodisplay(items);
-    e.preventDefault();
-  };
-
-  const displaybreakfast = (e) => {
-    const temp = items.filter((item) => item.category === 'breakfast');
-    setTodisplay(temp);
-    e.preventDefault();
-  };
-
-  const displaylunch = (e) => {
-    const temp = items.filter((item) => item.category === 'lunch');
-    setTodisplay(temp);
-    e.preventDefault();
-  };
-
-  const displayshakes = (e) => {
-    const temp = items.filter((item) => item.category === 'shakes');
-    setTodisplay(temp);
-    e.preventDefault();
-  };
+    const displayall=(e)=>{
+      setTodisplay(items);
+      e.preventDefault();
+    }
+    const displaybreakfast=(e)=>{
+      const temp=items.filter((item)=>{return item.category=="breakfast"})
+      setTodisplay(temp);
+      e.preventDefault();
+    }
+    const displaylunch=(e)=>{
+      const temp=items.filter((item)=>{return item.category=="lunch"})
+      setTodisplay(temp);
+      e.preventDefault();
+    }
+    const displayshakes=(e)=>{
+      const temp=items.filter((item)=>{return item.category=="shakes"})
+      setTodisplay(temp);
+      e.preventDefault();
+    }
 
   return (
     <div id='main'>
-      <h2>Our Menu</h2>
-      <div className='menu'>
-        <p id="filter-btn-all" onClick={displayall}>All</p>
-        <p id="filter-btn-breakfast" onClick={displaybreakfast}>Breakfast</p>
-        <p id="filter-btn-lunch" onClick={displaylunch}>Lunch</p>
-        <p id="filter-btn-shakes" onClick={displayshakes}>Shakes</p>
-      </div>
-      <div id='content'>
-        {todisplay.map((item) => (
-          <div className='card' key={item.id}>
-            <div className='img'><img src={item.img} alt={item.title}></img></div>
-            <div className='details'>
-              <div className='nameprice'>
-                <h4>{item.title}</h4>
-                <p>$ {item.price}</p>
-              </div>
-              <p>{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+        <h2>Our Menu</h2>
+        <div className='menu'>
+            <div id="all" onClick={displayall}>All</div>
+            <div id="filter-btn-1"><p data-test-id="menu-item-breakfast" onClick={displaybreakfast}>Breakfast</p></div>
+            <div id="filter-btn-2"><p data-test-id="menu-item-lunch" onClick={displaylunch}>Lunch</p></div>
+            <div id="filter-btn-3"><p data-test-id="menu-item-shakes" onClick={displayshakes}>Shakes</p></div>
+        </div>
+        <div id='content'>
+            {
+              todisplay.map((item)=>{
+                return <div className='card'>
+                  <div className='img'><img src={item.img} alt='image'></img></div>
+                  <div className='details'>
+                    <div className='nameprice'>
+                      <h4>{item.title}</h4>
+                      <p>$ {item.price}</p>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              })
+            }
+        </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
