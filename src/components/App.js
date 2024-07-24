@@ -99,13 +99,13 @@ function App() {
     }
 
   return (
-    <div className='main'>
+    <div id='main'>
         <h2>Our Menu</h2>
         <div className='menu'>
             <button id="all" onClick={displayall}>All</button>
-            <button id="breakfast" onClick={displaybreakfast}>Breakfast</button>
-            <button id="lunch" onClick={displaylunch}>Lunch</button>
-            <button id="shakes" onClick={displayshakes}>Shakes</button>
+            <button id="filter-btn-1" onClick={displaybreakfast}>Breakfast</button>
+            <button id="filter-btn-2" onClick={displaylunch}>Lunch</button>
+            <button id="filter-btn-3" onClick={displayshakes}>Shakes</button>
         </div>
         <div id='content'>
             {
