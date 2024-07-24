@@ -108,6 +108,9 @@ function App() {
             <p data-test-id="menu-item-shakes" onClick={displayshakes}>Shakes</p>
         </div>
         <div id='content'>
+          <div id="filter-btn-1"></div>
+          <div id="filter-btn-2"></div>
+          <div id="filter-btn-3"></div>
             {
               todisplay.map((item)=>{
                 return <div className='card'>
