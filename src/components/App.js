@@ -103,9 +103,9 @@ function App() {
         <h2>Our Menu</h2>
         <div className='menu'>
             <button id="all" onClick={displayall}>All</button>
-            <button id="filter-btn-1" onClick={displaybreakfast}>Breakfast</button>
-            <button id="filter-btn-2" onClick={displaylunch}>Lunch</button>
-            <button id="filter-btn-3" onClick={displayshakes}>Shakes</button>
+            <button id="filter-btn-1" data-test-id="menu-item-breakfast" onClick={displaybreakfast}>Breakfast</button>
+            <button id="filter-btn-2" data-test-id="menu-item-lunch" onClick={displaylunch}>Lunch</button>
+            <button id="filter-btn-3" data-test-id="menu-item-shakes" onClick={displayshakes}>Shakes</button>
         </div>
         <div id='content'>
             {
